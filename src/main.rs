@@ -4,9 +4,13 @@ fn main() {
     let mut run_tot = 0;
     let mut cpu;
 
+    println!("**********************");
+    println!("**    Game start    **");
+    println!("**********************");
+
     loop {
-        println!("Current total: {}", run_tot);
-        println!("Choose your number: (1, 2, 3 or q to quit)");
+        println!("** Current total: {}", run_tot);
+        println!("** Choose your number: (1, 2, 3 or q to quit)");
 
         let mut input = String::new();
 
@@ -14,22 +18,20 @@ fn main() {
             .read_line(&mut input)
             .expect("Failed to read line");
 
-        if input.trim() == "q" {
-            break;
-        }
-
-        let input: u32 = match input.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        match input {
-            1 | 2 | 3 => run_tot += input,
-            _ => println!("you can only add 1, 2 or 3 to the total!"),
+        match input.as_str().trim() {
+            "q" => break,
+            "1" => run_tot += 1,
+            "2" => run_tot += 2,
+            "3" => run_tot += 3,
+            _ => continue,
         }
 
         if run_tot == 21 {
-            println!("Game is over! You win, congratulations!");
+            println!("***********************");
+            println!("** 21, Game is over! **");
+            println!("**      You win!     **");
+            println!("**  Congratulations! **");
+            println!("***********************");
             break;
         }
 
@@ -40,10 +42,14 @@ fn main() {
         }
 
         run_tot += cpu;
-        println!("Computer is adding {}", cpu);
+        println!("** Computer is adding {}", cpu);
 
         if run_tot == 21 {
-            println!("Game is over! Too bad, CPU wins!");
+            println!("***********************");
+            println!("** 21, Game is over! **");
+            println!("**      Too bad!     **");
+            println!("**     CPU wins!     **");
+            println!("***********************");
             break;
         }
     }
