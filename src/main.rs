@@ -26,7 +26,7 @@ fn main() {
             _ => continue,
         }
 
-        if run_tot == 21 {
+        if run_tot >= 21 {
             println!("***********************");
             println!("** 21, Game is over! **");
             println!("**      You win!     **");
@@ -44,7 +44,7 @@ fn main() {
         run_tot += cpu;
         println!("** Computer is adding {}", cpu);
 
-        if run_tot == 21 {
+        if run_tot >= 21 {
             println!("***********************");
             println!("** 21, Game is over! **");
             println!("**      Too bad!     **");
