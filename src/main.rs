@@ -1,4 +1,3 @@
-use rand::Rng;
 use std::io;
 
 fn main() {
@@ -35,7 +34,7 @@ fn main() {
         }
 
         if run_tot < 18 {
-            cpu = rand::thread_rng().gen_range(1, 3);
+            cpu = rand::random::<u32>() % 3 + 1;
         } else {
             cpu = 21 - run_tot;
         }
